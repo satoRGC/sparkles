@@ -1,0 +1,98 @@
+@use "concept3/c3.scss" as c3;
+@use "./palette.scss";
+@use "sass:string";
+@font-face {
+    font-family: "Monaspace Neon";
+    src: url("assets/Monaspace\ Neon\ Var.woff2");
+    font-display: swap;
+}
+@font-face {
+    font-family: "Monaspace Krypton";
+    src: url("assets/Monaspace\ Krypton\ Var.woff2");
+    font-display: swap;
+}
+:root {
+    @include c3.std-root;
+    @include palette.palette();
+    --C3-STD-BORDER-RADIUS: 0px;
+    --C3-STD-FONT: 'Monaspace Neon Var', 'Monaspace Neon', monospace, monospace;
+    --C3-AUX-FONT: 'Monaspace Krypton Var', 'Monaspace Krypton', monospace, monospace;
+    // using C3-STD-FONT only affects non-links
+    button, input, a, label {
+        --C3-STD-FONT: var(--C3-AUX-FONT);
+    }
+    h1, h2, h3, legend {
+        font-family: var(--C3-AUX-FONT);
+    }
+    * {
+        --C3-DEPTH-SHADOW: 0 !important;
+    }
+    // got lucky this selects all c3 tooltips rn
+    .tooltip {
+        @include c3.depth-burrow(2);
+        .tooltip {
+            border: none;
+        }
+    }
+    fieldset {
+        border: 1px solid var(--C3-PALETTE-SLIGHT-TEXT);
+    }
+    legend {
+        font-size: var(--C3-FONT-SIZE-SMALL);
+        font-weight: 600;
+        padding: 0 .5em;
+    }
+    .message {
+        @extend %c3-std-panel;
+        display: flex;
+        font-weight: 600;
+        flex-direction: row;
+        gap: .75em;
+        align-items: center;
+        p {
+            margin: 0;
+        }
+        > svg {
+            flex-shrink: 0;
+            width: 1.5em;
+            height: 1.5em;
+        }
+    }
+    &:has(div.centered-page) {
+        overscroll-behavior-y: none;
+    }
+    div.centered-page {
+        position: absolute;
+        height: 100dvh;
+        width: 100%;
+        top: -8px; // account for body margin
+                   // this is really bad and should be corrected later
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+        gap: .5em;
+    }
+    div.cost {
+        font-size: 2.5em;
+        font-weight: 600;
+        font-family: var(--C3-AUX-FONT);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: .5em;
+    }
+    div.cost, p, h1, span {
+        svg {
+            filter: drop-shadow(var(--C3-TEXT-SHADOW));
+            width: 1em;
+            height: 1em;
+            vertical-align: text-top;
+        }
+    }
+    // number inputs
+    .nfc {
+        font-family: var(--C3-AUX-FONT);
+    }
+}

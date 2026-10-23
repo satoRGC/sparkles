@@ -1,0 +1,21 @@
+@use "concept3/c3.scss" as c3;
+@mixin palette($hue: 271) {
+    @include c3.palette-with-subpalettes(hsl($hue, 100%, 91%), false);
+    &, #{c3.palette-subpalette-selector()} {
+        --C3-PRIMARY: var(--C3-PALETTE-ROOT-SECONDARY);
+        --C3-SECONDARY: var(--C3-PALETTE-ROOT-PRIMARY);
+    }
+    @media (prefers-color-scheme: dark) {
+        @include c3.palette-with-subpalettes(hsl($hue, 56%, 18%), true);
+        &, #{c3.palette-subpalette-selector()} {
+            --C3-PRIMARY: var(--C3-PALETTE-ROOT-PRIMARY);
+            --C3-SECONDARY: var(--C3-PALETTE-ROOT-SECONDARY);
+        }
+    }
+    &, #{c3.palette-subpalette-selector()} {
+        --C3-PALETTE-ROOT-TEXT: var(--C3-PALETTE-BACKGROUND-TEXT);
+        --C3-PALETTE-ROOT-SUBTEXT: var(--C3-PALETTE-BACKGROUND-SUBTEXT);
+        --C3-PALETTE-BORDER-WEAK: var(--C3-PALETTE-BORDER-STRONG);
+    }
+    //--C3-PALETTE-BORDER-STRONG: var(--C3-PALETTE-SLIGHT-TEXT);
+}
