@@ -15,7 +15,7 @@ export const loginOrRegister = form(
             cookies.set(
                 'token',
                 await login(studentId, lastName),
-                {secure:false}
+                { maxAge: 2592000 /* one month */ }
             )
             redirect(303, url.searchParams.get(`then`) || "/")
         } catch (e) {
