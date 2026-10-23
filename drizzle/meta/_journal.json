@@ -5,15 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1792457594019,
-      "tag": "0000_common_triathlon",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1792710187854,
-      "tag": "0001_short_lockjaw",
+      "when": 1792724691501,
+      "tag": "0000_mysterious_william_stryker",
       "breakpoints": true
     }
   ]
