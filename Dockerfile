@@ -23,7 +23,6 @@ COPY concept3 node_modules/concept3
 RUN chown bun:bun /usr/src/app
 USER bun
 COPY .env.example .env
-RUN f="$(ls node_modules/concept3/ )" && echo $f && sleep 10
 RUN NODE_ENV=production bun --bun run build
 
 FROM base AS release
